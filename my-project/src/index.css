@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+/* index.css or App.css */
+@keyframes growUnderlineLoop {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.animate-growUnderlineLoop {
+  animation: growUnderlineLoop 2s ease-in-out infinite;
+}
+
