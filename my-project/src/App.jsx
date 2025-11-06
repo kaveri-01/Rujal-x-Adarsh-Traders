@@ -13,31 +13,27 @@ import RujalMedia from "./marketing/RujalMedia";
 
 function App() {
   return (
-    // <CartProvider> 
-      <div>
-        <Navbar />
+    // <CartProvider>
+    <div>
+      <Navbar />
 
-        
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/products" element={<Products />} />
-           
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/products" element={<Products />} />
 
-             <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/contactus" element={<ContactUs />} />
-            {/* <Route path="/men" element={<ProductsPage defaultCategory="men" />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        {/* <Route path="/men" element={<ProductsPage defaultCategory="men" />} />
             <Route path="/women" element={<ProductsPage defaultCategory="women" />} />
             <Route path="/kids" element={<ProductsPage defaultCategory="kids" />} />
             <Route path="/cart" element={<CartPage />} />  */}
-          
-          </Routes>
-       
+      </Routes>
 
-        <Footer />
-        <RujalMedia />
-      </div>
-    // </CartProvider> 
+      <Footer />
+      <RujalMedia />
+    </div>
+    // </CartProvider>
   );
 }
 

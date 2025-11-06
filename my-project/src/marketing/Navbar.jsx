@@ -1,8 +1,10 @@
 // src/components/Navbar.jsx
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const router = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
@@ -11,7 +13,6 @@ const Navbar = () => {
     { name: "Products", href: "/products" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contactus" },
-    
   ];
 
   return (
@@ -29,13 +30,13 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 text-gray-700 font-medium">
           {navLinks.map((link) => (
-            <a
+            <p
               key={link.name}
-              href={link.href}
-              className="hover:text-blue-600 transition-colors duration-200"
+              onClick={() => router(link.href)}
+              className="hover:text-blue-600 transition-colors duration-200 cursor-pointer"
             >
               {link.name}
-            </a>
+            </p>
           ))}
         </div>
 
@@ -53,14 +54,16 @@ const Navbar = () => {
         <div className="md:hidden bg-white shadow-md border-t">
           <div className="flex flex-col items-start px-6 py-4 space-y-3">
             {navLinks.map((link) => (
-              <a
+              <p
                 key={link.name}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="w-full text-gray-700 hover:text-blue-600 transition-colors"
+                onClick={() => {
+                  router(link.href);
+                  setMenuOpen(false);
+                }}
+                className="w-full text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
               >
                 {link.name}
-              </a>
+              </p>
             ))}
           </div>
         </div>
