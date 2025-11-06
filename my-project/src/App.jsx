@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import Services from "./Pages/Services";
 import Products from "./Pages/Products";
 import AboutUs from "./marketing/AboutUs";
-// import ContactUs from "./marketing/ContactUs";
+import ContactUs from "./marketing/ContactUs";
 
 // import CartPage from "./Pages/CartPage";
 
@@ -25,8 +25,8 @@ function App() {
            
 
              <Route path="aboutus" element={<AboutUs />} />
-            {/* <Route path="contactus" element={<ContactUs />} />
-            <Route path="/men" element={<ProductsPage defaultCategory="men" />} />
+            <Route path="contactus" element={<ContactUs />} />
+            {/* <Route path="/men" element={<ProductsPage defaultCategory="men" />} />
             <Route path="/women" element={<ProductsPage defaultCategory="women" />} />
             <Route path="/kids" element={<ProductsPage defaultCategory="kids" />} />
             <Route path="/cart" element={<CartPage />} />  */}

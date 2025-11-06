@@ -10,7 +10,6 @@ const INVENTORY = [
     category: "Spinning",
     type: "Ring Frame",
     brand: "Rieter",
-    status: "Available",
     year: 2016,
     country: "India",
     price: 185000,
@@ -24,7 +23,6 @@ const INVENTORY = [
     category: "Spinning",
     type: "Carding",
     brand: "Trutzschler",
-    status: "Available",
     year: 2018,
     country: "Vietnam",
     price: 139000,
@@ -38,7 +36,6 @@ const INVENTORY = [
     category: "Winding",
     type: "Autoconer",
     brand: "Schlafhorst",
-    status: "Sold",
     year: 2019,
     country: "Indonesia",
     price: 212000,
@@ -52,7 +49,6 @@ const INVENTORY = [
     category: "Testing",
     type: "Lab Equipment",
     brand: "Uster",
-    status: "Available",
     year: 2020,
     country: "Bangladesh",
     price: 98000,
@@ -66,7 +62,6 @@ const INVENTORY = [
     category: "Weaving",
     type: "Airjet Loom",
     brand: "Toyota",
-    status: "Available",
     year: 2017,
     country: "Turkey",
     price: 45000,
@@ -80,7 +75,6 @@ const INVENTORY = [
     category: "Weaving",
     type: "Rapier Loom",
     brand: "Picanol",
-    status: "Available",
     year: 2021,
     country: "India",
     price: 76000,
@@ -94,7 +88,6 @@ const INVENTORY = [
     category: "Spinning",
     type: "Ring Frame",
     brand: "LMW",
-    status: "Sold",
     year: 2015,
     country: "Pakistan",
     price: 99000,
@@ -108,7 +101,6 @@ const INVENTORY = [
     category: "Processing",
     type: "Stenter",
     brand: "Monforts",
-    status: "Available",
     year: 2014,
     country: "India",
     price: 120000,
@@ -122,7 +114,6 @@ const INVENTORY = [
     category: "Blowroom",
     type: "Bale Opener",
     brand: "Rieter",
-    status: "Available",
     year: 2017,
     country: "Vietnam",
     price: 54000,
@@ -136,7 +127,6 @@ const INVENTORY = [
     category: "Winding",
     type: "Autoconer",
     brand: "Savio",
-    status: "Available",
     year: 2016,
     country: "Indonesia",
     price: 128000,
@@ -154,7 +144,6 @@ export default function Products() {
   const [openFilters, setOpenFilters] = useState(false);
   const [filters, setFilters] = useState({
     category: [], // multi
-    status: [], // ["Available", "Sold"]
     type: [], // multi
     brand: [], // multi
     country: [], // multi
@@ -171,7 +160,6 @@ export default function Products() {
   const options = useMemo(() => {
     return {
       categories: unique(INVENTORY.map((i) => i.category)),
-      statuses: unique(INVENTORY.map((i) => i.status)),
       types: unique(INVENTORY.map((i) => i.type)),
       brands: unique(INVENTORY.map((i) => i.brand)),
       countries: unique(INVENTORY.map((i) => i.country)),
@@ -188,7 +176,6 @@ export default function Products() {
       const text = `${item.title} ${item.brand} ${item.type} ${item.category} ${item.country}`.toLowerCase();
       if (q && !text.includes(q.toLowerCase())) return false;
       if (filters.category.length && !filters.category.includes(item.category)) return false;
-      if (filters.status.length && !filters.status.includes(item.status)) return false;
       if (filters.type.length && !filters.type.includes(item.type)) return false;
       if (filters.brand.length && !filters.brand.includes(item.brand)) return false;
       if (filters.country.length && !filters.country.includes(item.country)) return false;
@@ -236,7 +223,6 @@ export default function Products() {
   const clearAll = () => {
     setFilters({
       category: [],
-      status: [],
       type: [],
       brand: [],
       country: [],
@@ -369,9 +355,6 @@ export default function Products() {
                 <article key={p.id} className="group rounded-2xl overflow-hidden border bg-white hover:shadow-xl transition">
                   <div className="aspect-video overflow-hidden relative">
                     <img src={p.thumbnail} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                    {p.status === "Sold" && (
-                      <span className="absolute top-3 left-3 text-xs font-semibold bg-red-600 text-white px-2 py-1 rounded">SOLD</span>
-                    )}
                   </div>
                   <div className="p-5">
                     <div className="flex items-center gap-2 text-blue-700 text-xs font-semibold">
@@ -441,24 +424,6 @@ function SearchBox({ q, setQ }) {
 function FiltersPanel({ filters, setFilters, options, toggle, clearAll }) {
   return (
     <div className="space-y-6">
-      {/* Status */}
-      <fieldset className="border rounded-xl p-4">
-        <legend className="px-1 text-sm font-semibold">Availability</legend>
-        <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
-          {options.statuses.map((s) => (
-            <label key={s} className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                className="accent-blue-700"
-                checked={filters.status.includes(s)}
-                onChange={() => toggle("status", s)}
-              />
-              <span>{s}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
       {/* Category */}
       <fieldset className="border rounded-xl p-4">
         <legend className="px-1 text-sm font-semibold">Category</legend>
