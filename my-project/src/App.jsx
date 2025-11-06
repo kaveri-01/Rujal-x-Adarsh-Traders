@@ -24,8 +24,8 @@ function App() {
             <Route path="/products" element={<Products />} />
            
 
-             <Route path="aboutus" element={<AboutUs />} />
-            <Route path="contactus" element={<ContactUs />} />
+             <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contactus" element={<ContactUs />} />
             {/* <Route path="/men" element={<ProductsPage defaultCategory="men" />} />
             <Route path="/women" element={<ProductsPage defaultCategory="women" />} />
             <Route path="/kids" element={<ProductsPage defaultCategory="kids" />} />
